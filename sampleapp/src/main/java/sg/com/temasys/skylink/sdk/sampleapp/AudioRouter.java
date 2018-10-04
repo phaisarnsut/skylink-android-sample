@@ -1,5 +1,7 @@
 package sg.com.temasys.skylink.sdk.sampleapp;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothHeadset;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +19,8 @@ public class AudioRouter {
 
     private static final String TAG = AudioRouter.class.getName();
     private static BroadcastReceiver headsetBroadcastReceiver;
+    private static BroadcastReceiver blueToothBroadcastReceiver;
+    private static BroadcastReceiver blueToothAudioBroadcastReceiver;
 
     private static AudioManager audioManager;
 
@@ -41,6 +45,51 @@ public class AudioRouter {
                             log = logTag + "Headset: Error determining state!";
                             Log.d(TAG, log);
                     }
+                    // Reset audio path
+                    setAudioPath();
+                }
+            }
+        };
+
+        blueToothBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+                    String logTag = "[SA][headsetBroadcastReceiver][onReceive] ";
+                    String log;
+                    if (intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, -1) == BluetoothAdapter.STATE_OFF) {
+                        log = logTag + "Bluetooth: off";
+                        Log.d(TAG, log);
+                    }
+                    // Reset audio path
+                    setAudioPath();
+                }
+            }
+
+        };
+
+        blueToothAudioBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED)) {
+                    String logTag = "[SA][headsetBroadcastReceiver][onReceive] ";
+                    String log;
+                    int currentAudioState = intent.getIntExtra(BluetoothHeadset.EXTRA_STATE, -1);
+
+                    if (currentAudioState == BluetoothHeadset.STATE_DISCONNECTED) {
+                        log = logTag + "Bluetooth on headset: off";
+                        Log.d(TAG, log);
+                    } else if (currentAudioState == BluetoothHeadset.STATE_DISCONNECTING) {
+                        log = logTag + "Bluetooth on headset: off";
+                        Log.d(TAG, log);
+                    } else if (currentAudioState == BluetoothHeadset.STATE_CONNECTED) {
+                        log = logTag + "Bluetooth on headset: on";
+                        Log.d(TAG, log);
+                    } else if (currentAudioState == BluetoothHeadset.STATE_CONNECTING) {
+                        log = logTag + "Bluetooth on headset: on";
+                        Log.d(TAG, log);
+                    }
+
                     // Reset audio path
                     setAudioPath();
                 }
@@ -98,6 +147,10 @@ public class AudioRouter {
         // Must use applicationContext here and not Activity context.
         appContext.registerReceiver(headsetBroadcastReceiver,
                 new IntentFilter(Intent.ACTION_HEADSET_PLUG));
+        appContext.registerReceiver(blueToothBroadcastReceiver,
+                new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
+        appContext.registerReceiver(blueToothAudioBroadcastReceiver,
+                new IntentFilter(BluetoothHeadset.ACTION_CONNECTION_STATE_CHANGED));
 
         log = logTag + "Setting Audio Path...";
         Log.d(TAG, log);
@@ -132,8 +185,12 @@ public class AudioRouter {
         }
 
         try {
+            audioManager = null;
+
             // Must use applicationContext here and not Activity context.
             context.getApplicationContext().unregisterReceiver(headsetBroadcastReceiver);
+            context.getApplicationContext().unregisterReceiver(blueToothBroadcastReceiver);
+            context.getApplicationContext().unregisterReceiver(blueToothAudioBroadcastReceiver);
             log = logTag + "Unregister receiver.";
             // Catch potential exception:
             // java.lang.IllegalArgumentException: Receiver not registered
@@ -161,7 +218,9 @@ public class AudioRouter {
                     "Attempt to set audio path before setting AudioManager");
         }
         boolean isWiredHeadsetOn = audioManager.isWiredHeadsetOn();
-        if (isWiredHeadsetOn) {
+        boolean isBluetoothOn = audioManager.isBluetoothA2dpOn();
+
+        if (isWiredHeadsetOn || isBluetoothOn) {
             log = logTag + "Setting Speakerphone to off as wired headset is on.";
             audioManager.setSpeakerphoneOn(false);
         } else {
@@ -186,7 +245,10 @@ public class AudioRouter {
         }
 
         getInstance();
-        instance.init(((AudioManager) context.getSystemService(Context.AUDIO_SERVICE)));
+
+        AudioManager audioManager = ((AudioManager) context.getSystemService(Context.AUDIO_SERVICE));
+
+        instance.init(audioManager);
         log = logTag + "Initializing audio router is complete.";
         Log.d(TAG, log);
     }
