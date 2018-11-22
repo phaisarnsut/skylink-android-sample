@@ -3,12 +3,15 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {
+            url "https://maven.google.com"
+        }
+        maven {
             url "https://plugins.gradle.org/m2/"
         }
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.1.3'
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
     }
 }
@@ -34,18 +37,22 @@ repositories {
     maven {
         url = 'http://archiva.temasys.com.sg/repository/internal'
     }
+    maven {
+        url "https://maven.google.com"
+    }
     google()
+    jcenter()
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 27
     defaultConfig {
-        applicationId "sg.com.temasys.skylink.sampleapp_0_10_0"
+        applicationId "sg.com.temasys.skylink.sampleapp_0_11_0_custom_video_capturer"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "0.11.0"
+        multiDexEnabled true
     }
     // Run lint checks but don't abort build
     lintOptions {
@@ -58,17 +65,23 @@ android {
 
     dependencies {
         implementation fileTree(include: ['*.jar'], dir: 'libs')
-        implementation 'com.android.support:appcompat-v7:'
+        implementation 'com.android.support:appcompat-v7:27.1.0'
+        implementation 'com.android.support:design:27.1.0'
         //noinspection GradleCompatible
         implementation 'com.android.support:support-v4:25.4.0'
         implementation 'com.android.support:design:25.4.0'
         implementation 'com.android.support:cardview-v7:25.4.0'
         implementation 'com.android.support:recyclerview-v7:25.4.0'
         implementation(group: 'sg.com.temasys.skylink.sdk',
-                name: 'skylink_sdk',
-                version: '0.11.0-RELEASE',
+                name: 'skylink_sdk_test',
+                version: '0.11.0-CUSTOM_VIDEO_CAPTURER',
                 ext: 'aar') {
             transitive = true
         }
     }
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 }

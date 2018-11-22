@@ -1,0 +1,215 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <GridLayout
+            android:id="@+id/gridContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3">
+
+            <LinearLayout
+                android:id="@+id/audioContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginRight="@dimen/dp_20dp"
+                android:layout_marginBottom="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/audioContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnAudioCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_audio_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvAudio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnAudioCall"
+                        android:gravity="center_horizontal"
+                        android:text="@string/audio"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/videoContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginLeft="@dimen/dp_20dp"
+                android:layout_marginRight="@dimen/dp_20dp"
+                android:layout_marginBottom="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/videoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnVideoCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_video_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnVideoCall"
+                        android:gravity="center_horizontal"
+                        android:text="@string/video"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/chatContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginLeft="@dimen/dp_20dp"
+                android:layout_marginBottom="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/chatContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnChat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_chat_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvChat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnChat"
+                        android:gravity="center_horizontal"
+                        android:text="@string/chat"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fileContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginRight="@dimen/dp_20dp"
+                android:layout_marginTop="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/fileContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnFileTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_file_transfer_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvFileTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnFileTransfer"
+                        android:gravity="center_horizontal"
+                        android:text="@string/fileTransfer"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dataContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginLeft="@dimen/dp_20dp"
+                android:layout_marginRight="@dimen/dp_20dp"
+                android:layout_marginTop="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/dataContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnDataTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_data_transfer_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvDataTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnDataTransfer"
+                        android:gravity="center_horizontal"
+                        android:text="@string/dataTransfer"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/multiVideoContainerBig"
+                android:layout_width="@dimen/dp_150dp"
+                android:layout_height="@dimen/dp_80dp"
+                style="@style/CustonmButton"
+                android:layout_marginLeft="@dimen/dp_20dp"
+                android:layout_marginTop="@dimen/dp_20dp">
+
+                <RelativeLayout
+                    android:id="@+id/multiVideoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMultiVideoCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_multi_video_call_icon"/>
+
+                    <TextView
+                        android:id="@+id/tvMultiVideoCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnMultiVideoCall"
+                        android:gravity="center_horizontal"
+                        android:text="@string/multiVideo"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </GridLayout>
+    </LinearLayout>
+
+</LinearLayout>

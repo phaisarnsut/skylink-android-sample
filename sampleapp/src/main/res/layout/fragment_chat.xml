@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:layout_margin="@dimen/dp_10dp"
               android:orientation="vertical">
 
     <ScrollView
@@ -13,7 +14,7 @@
         android:focusableInTouchMode="true">
 
         <TextView
-            android:id="@+id/tv_room_details"
+            android:id="@+id/tv_chat_room_details"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text=""
@@ -39,8 +40,7 @@
     <ScrollView
         android:id="@+id/scroll_peers"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/lin_layout_peers"
@@ -62,35 +62,35 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_all_peers"
-                        android:visibility="invisible"/>
+                        android:visibility="gone"/>
 
                     <RadioButton
                         android:id="@+id/radio_btn_peer1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:visibility="invisible"/>
+                        android:visibility="gone"/>
 
                     <RadioButton
                         android:id="@+id/radio_btn_peer2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:visibility="invisible"/>
+                        android:visibility="gone"/>
 
                     <RadioButton
                         android:id="@+id/radio_btn_peer3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:visibility="invisible"/>
+                        android:visibility="gone"/>
 
                     <RadioButton
                         android:id="@+id/radio_btn_peer4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:visibility="invisible"/>
+                        android:visibility="gone"/>
 
                 </RadioGroup>
             </HorizontalScrollView>
@@ -101,21 +101,25 @@
         android:id="@+id/lin_layout_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_5dp">
 
         <Button
             android:id="@+id/btn_send_server_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Server Msg"/>
+            android:text="Server Msg"
+            android:layout_marginRight="@dimen/dp_10dp"
+            android:background="@drawable/button_corner_ripple"/>
 
         <Button
             android:id="@+id/btn_send_p2p_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="P2P Msg"/>
+            android:text="P2P Msg"
+            android:background="@drawable/button_corner_ripple"/>
     </LinearLayout>
 
 </LinearLayout>

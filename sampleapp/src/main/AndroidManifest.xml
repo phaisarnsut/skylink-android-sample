@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -21,7 +24,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="sg.com.temasys.skylink.sdk.sampleapp.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -29,6 +32,34 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".audio.AudioCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_section1"/>
+        <activity
+            android:name=".chat.ChatActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_section3"/>
+        <activity
+            android:name=".filetransfer.FileTransferActivity"
+            android:label="@string/title_section4"/>
+        <activity
+            android:name=".datatransfer.DataTransferActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_section5"/>
+        <activity
+            android:name=".video.VideoCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_section2"/>
+        <activity
+            android:name=".multipartyvideo.MultiPartyVideoCallActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_section6"/>
+
+        <activity
+            android:name=".setting.SettingActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/settings"></activity>
     </application>
 
 </manifest>
