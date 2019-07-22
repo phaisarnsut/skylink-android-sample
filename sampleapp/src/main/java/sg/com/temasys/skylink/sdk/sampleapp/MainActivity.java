@@ -1,11 +1,13 @@
 package sg.com.temasys.skylink.sdk.sampleapp;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+//import android.appcompat.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,7 +17,7 @@ import sg.com.temasys.skylink.sdk.sampleapp.ConfigFragment.ConfigFragment;
 import static sg.com.temasys.skylink.sdk.sampleapp.Utils.toastLogLong;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     public static final String ARG_SECTION_NUMBER = "section_number";

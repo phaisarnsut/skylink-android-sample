@@ -1,24 +1,16 @@
 package sg.com.temasys.skylink.sdk.sampleapp.ConfigFragment;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
+
 import sg.com.temasys.skylink.sdk.sampleapp.R;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ConfigFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ConfigFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 
 public class ConfigFragment extends Fragment {
 
